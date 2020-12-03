@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate')  %> 
+<div class="row">
+    <h1 class="text-center">New Park</h1>
+    <div class="col-6 offset-3">
+        <form action="/parks" method="POST" novalidate class="validated-form">
+            <div>
+                <label class="form-label" for="name">Park Name:</label>
+                <input class="form-control" type="text" name="name" id="name" placeholder="park name" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location:</label>
+                <input class="form-control" type="text" name="location" id="location" placholder='street, city, etc.' required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="image">Image Url:</label>
+                <input class="form-control" type="text" name="image" id="image" placholder='paste url'>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Entrance Fee:</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">$</span>
+                    <input class="form-control" type="number" min="0" name="price" id="price" placeholder="entrance fee" required>
+                    <span class="input-group-text">.00</span>
+                  </div>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label" for="category">Park Type:</label>
+                <select class="form-select" name="category" id="category">
+                    <option value="state">state</option>
+                    <option value="local">local/city</option>
+                    <option value="private">private</option>
+                    <option value="unknown" selected>unknown</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="parking">Parking Information:</label>
+                <input class="form-control" type="text" name="parking" id='parking' placeholder="parking info">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description:</label>
+                <div>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="10" required></textarea>
+                </div>
+                
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Submit</button>
+            </div>
+           
+        </form>
+    </div>
+    </div>

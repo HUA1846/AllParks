@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')  %> 
+    <h1>All Parks</h1>
+    
+        <% for(let park of parks) { %>
+            <div class="card" mb-3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-fluid" alt="" src="<%=park.image%>">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=park.name%></h5>
+                            <small class="text-muted"><%=park.location%> </small>
+                            <p class="card-text"><%=park.description%> </p>
+                            <div>
+                                <a class="btn btn-primary" href="/parks/<%=park._id%>">View</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <% } %> 
+
+  
+  
+    
