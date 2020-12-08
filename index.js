@@ -2,15 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const path = require('path');
+const session = require('express-session');
+const flash = require('connect-flash');
 const methodOverride = require('method-override') 
-const Park = require('./models/parks');
-const { nextTick } = require('process');
-const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
+const parkRoutes = require('./routes/parkRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 mongoose.connect('mongodb://localhost:27017/socalparks', {
     useNewUrlParser: true,
     useCreateIndex: true, 
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -25,53 +27,45 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-app.get('/parks', catchAsync(async (req, res) => {
-    const parks = await Park.find({});
-    res.render('parks/index', {parks});
-}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/parks/new', (req, res) => {
-    res.render('parks/new');
-});
+const sessionConfig = {
+    name: 'session',
+    secret: 'not really a secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+app.use(session(sessionConfig));
+app.use(flash());
 
-app.post('/parks', catchAsync(async (req, res, next) => {
-    if(!req.body.name) throw new ExpressError('invalide data', 400);
-    const newPark = new Park(req.body);
-    await newPark.save();
-    res.redirect(`parks/${newPark._id}`);
-  
-}));
+//has to be before the route handlers
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
 
-app.get('/parks/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const park = await Park.findById(id);
-    res.render('parks/show', {park});
-}));
+app.use('/parks', parkRoutes);
+app.use('/parks/:id/reviews', reviewRoutes);
+        //the prefix you want to use for the routes
 
-app.get('/parks/:id/edit', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const park = await Park.findById(id);
-    res.render('parks/edit', {park});
-}));
 
-app.put('/parks/:id', catchAsync(async (req, res) =>{
-    const { id } = req.params;
-    const park = await Park.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
-    res.redirect(`/parks/${park._id}`);
-}));
+        
 
-app.delete('/parks/:id', catchAsync(async (req, res) => {
-    const { id } = req.params;
-    const deleted = await Park.findByIdAndDelete(id);
-    res.redirect('/parks');
-}));
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('page not found', 404));
 })
 app.use((err, req, res, next) =>{
-    const {message="something went wrong", statusCode = 500} = err;
-    res.status(statusCode).send(message);
+    const {statusCode = 500} = err;
+    if(!err.message) err.message = "Oh no, Something went wrong!"
+    res.status(statusCode).render('error', {err});
 })
 
 
