@@ -17,7 +17,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'San Diego, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Mount San Jacinto State Park',
@@ -26,7 +27,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Riverside County, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Malibu Creek State Park',
@@ -35,7 +37,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Malibu, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'El Capitan Beach State Park',
@@ -44,7 +47,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Santa Barbara, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Bolsa Chica Beach State Park',
@@ -53,7 +57,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Orange County, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Gaviota State Park',
@@ -62,7 +67,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Santa Barbara, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Chino Hills State Park',
@@ -71,7 +77,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Chino Hills, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Border Field State Park',
@@ -80,7 +87,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'San Diego, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Saddleback Butte State Park',
@@ -89,7 +97,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Antelope Valley, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Palomar Mountain State Park',
@@ -98,7 +107,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'densely wooded',
             location: 'CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Crystal Cove State Park',
@@ -107,7 +117,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Orange County, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Barnes Park',
@@ -116,7 +127,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Monterey Park, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Placerita Canyon State Park',
@@ -125,7 +137,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'San Gabriel Mountains, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Will Rogers State Park',
@@ -134,7 +147,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Pacific Palisades, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
         {
             name: 'Rosemead Park',
@@ -143,7 +157,8 @@ mongoose.connect('mongodb://localhost:27017/socalparks', { useNewUrlParser: true
             price: 0,
             description: 'good for family',
             location: 'Rosemead, CA',
-            image: "https://source.unsplash.com/collection/657335"
+            image: "https://source.unsplash.com/collection/657335",
+            author: '5fd1595ce0b5064368010f02'
         },
     ]
     
