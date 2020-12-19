@@ -1,6 +1,8 @@
 const mongoose = require('mongoose'); 
 const Review = require('./reviews');
 const Schema = mongoose.Schema;
+const opts = { toJSON: {virtuals: true}};
+//By default< Mongoose does not include virtuals when you conver a doc to JSON.
 
 const ImageSchema = new Schema({
         url: String,
@@ -37,6 +39,17 @@ const parkSchema = new Schema({
         type: String,
         
     },
+    geometry: { //it's the pattern GeoJson works
+            type: {
+              type: String, 
+              enum: ['Point'], // 'location.type' must be 'Point'
+              required: true
+            },
+            coordinates: {
+              type: [Number],
+              required: true
+            }
+    },
     image: [ImageSchema], // update image to be an array to store multiple image
 
     author: {
@@ -49,7 +62,7 @@ const parkSchema = new Schema({
         ref: 'Review'
         } 
     ]     
-});
+}, opts);
 
 parkSchema.post('findOneAndDelete', async function(doc){
     if(doc){
@@ -59,6 +72,9 @@ parkSchema.post('findOneAndDelete', async function(doc){
     }
 })
 
+parkSchema.virtual('properties.popUpMarkup').get(function (){
+    return `<strong><a href="/parks/${this._id}">${this.name}</a>`
+})
 const Park = mongoose.model('Park', parkSchema);
 
 module.exports = Park;
