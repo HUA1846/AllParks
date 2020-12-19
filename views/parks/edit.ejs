@@ -2,7 +2,7 @@
 <div class="row">
     <h1 class="text-center">Update Park</h1>
     <div class="col-6 offset-3">
-        <form action="/parks/<%=park._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+        <form action="/parks/<%=park._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label" for="name">Park Name:</label>
                 <input class="form-control" type="text" name="name" id="name" value="<%= park.name %> " required>
@@ -13,8 +13,8 @@
             </div>
             <img src="<%=park.image%>" alt="">
             <div class="mb-3">
-                <label class="form-label" for="image">Image Url:</label>
-                <input class="form-control" class="form-control" type="text" name="image" id="image" value="<%=park.image%> ">
+                <label class="form-label" for="image">Image</label>
+                <input type="file" name="image" id="image" multiple>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="price">Entrance Fee:</label>
@@ -39,6 +39,16 @@
                 <textarea class="form-control" name="description" id="description" cols="30" rows="10"><%=park.description %></textarea>
                 </div>
                 
+            </div>
+            <div class="mb-3">
+                <% park.image.forEach(function(img, i){ %> 
+                    <img src="<%=img.thumbnail%>" alt="" class="img-thumbnail">
+                    <div class="form-check-inlinie">
+                        <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                       <!-- any check box that is checked, it's value is added to deleteImages[] array -->
+                    </div>
+                    <label for="image-<%=i%>">Delete</label>
+                <% }) %> 
             </div>
             <div class="mb-3">
                 <button class="btn btn-primary">Submit</button>

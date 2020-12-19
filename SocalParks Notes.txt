@@ -1,0 +1,52 @@
+Project Name: Socal Parks
+Description: a web app that allows users to view and comment on all the socal parks. Authoriszed admin is allowed to update park info to insure accuracy.
+
+Language: Javascript
+Create model: Mongoose 
+Framework: express
+HTML template: EJS
+Styling: Bootstrap, ejs-mate
+Error Handling
+Data base: mongoDB- non SQL, flexible, not relational database, based on peices of data known as documents, similar to JSON objects, can be structured in whatever way we like.
+
+Express session: npm i express-session
+Setting up flash: which depends on session. npm i connect-flash
+
+Authetication: Passport iauthentication middleware for Node.js
+	      npm i passport passport-local passport-local-mongoose
+hashing algorithm: Pbkdf2, not bcrypt
+authentication from scratch - harder to modify if I want to add in more login methods.
+
+Park author authentication:
+add author to park schema, reseed the parks database with author;
+
+
+Review author authentication:
+	user side: ejs template to hide the delete button on show page;
+	server side: isAuthor middleware (utils/auth)
+
+Image upload: Multer - a node.js middleware for handling multipart/form-data, which is primarily used for uploading files
+
+Cloudinary
+
+Dotenv: to separate develop mode from user mode(not uploading things I don't want to show to everyone) It is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code
+
+install cloudinary and multer-storage-cloudinary
+
+Store uploaded image info in Mongo: We want - path & filename
+
+console.log(req.files) 	You Get This:
+{
+    fieldname: 'image',
+    originalname: 'IMG_5876.jpg',
+    encoding: '7bit',
+    mimetype: 'image/jpeg',
+    path: 'https://res.cloudinary.com/dlcyr32yry/image/upload/v1608320920/SocalParks/gcff6wgxrvgm69yh4ngo.jpg',
+    size: 2773848,
+    filename: 'SocalParks/gcff6wgxrvgm69yh4ngo'
+  },
+
+MVC design pattern: model - view - controller
+
+Geocoding using MapBox + mapbox-sdk-js
+
