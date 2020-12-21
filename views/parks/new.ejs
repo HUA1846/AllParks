@@ -2,7 +2,7 @@
 <div class="row">
     <h1 class="text-center">New Park</h1>
     <div class="col-6 offset-3">
-        <form action="/parks" method="POST" novalidate class="validated-form">
+        <form action="/parks" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div>
                 <label class="form-label" for="name">Park Name:</label>
                 <input class="form-control" type="text" name="name" id="name" placeholder="park name" required>
@@ -11,10 +11,14 @@
                 <label class="form-label" for="location">Location:</label>
                 <input class="form-control" type="text" name="location" id="location" placholder='street, city, etc.' required>
             </div>
-            <div class="mb-3">
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="image">Upload</label>
+                <input type="file" class="form-control" name="image" id="image" multiple>
+              </div>
+            <!-- <div class="mb-3">
                 <label class="form-label" for="image">Image Url:</label>
                 <input class="form-control" type="text" name="image" id="image" placholder='paste url'>
-            </div>
+            </div> -->
             <div class="mb-3">
                 <label class="form-label" for="price">Entrance Fee:</label>
                 <div class="input-group mb-3">
